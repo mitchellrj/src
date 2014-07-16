@@ -1,6 +1,10 @@
 Changes
 =======
 
+0.0.5
+-----
+Fixed behaviour when run with ``easy_install``.
+
 0.0.4
 -----
 Added manifest to package.
