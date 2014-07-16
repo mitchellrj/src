@@ -76,7 +76,7 @@ setup(
     author='Richard Mitchell',
     author_email='mitch@awesomeco.de',
     url='https://github.com/mitchellrj/src',
-    license='WTFPL',
+    license='Apache 2.0',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
