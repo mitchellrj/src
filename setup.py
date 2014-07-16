@@ -24,10 +24,16 @@ tests_require = [
 
 class InstallCommand(DefaultInstallCommand):
 
+    root = None
+    finalized = True
+
     def __init__(self, dist):
         pass
 
     def ensure_finalized(self):
+        pass
+
+    def finalize_options(self):
         pass
 
     def run(self):
@@ -62,5 +68,6 @@ setup(
     """,
     cmdclass={
         'install': InstallCommand,
+        'install_lib': InstallCommand,
     },
 )
