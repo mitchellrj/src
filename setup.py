@@ -3,7 +3,7 @@ try:
     from distutils.command.install import install as DefaultInstallCommand
 except ImportError:
     Command = object
-    class DefaultInstallCommand(object):
+    class DefaultInstallCommand(Command):
         user_options = []
 
 from setuptools import find_packages
