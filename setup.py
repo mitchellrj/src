@@ -10,7 +10,7 @@ from setuptools import find_packages
 from setuptools import setup
 
 
-version = '0.0.3'
+version = '0.0.4'
 long_description = '\n\n'.join([open(f).read() for f in [
     'README.rst',
     'LICENSE.rst',
