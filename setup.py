@@ -1,17 +1,28 @@
 try:
-    from distutils.cmd import Command
-    from distutils.command.install import install as DefaultInstallCommand
+    from setuptools import Command
+    from setuptools.command.install import install as DefaultInstallCommand
+    from setuptools.command.install_lib import install_lib as \
+        DefaultInstallLibCommand
 except ImportError:
-    Command = object
+    try:
+        from distutils.cmd import Command
+        from distutils.command.install import install as DefaultInstallCommand
+        from distutils.command.install_lib import install_lib as \
+            DefaultInstallLibCommand
+    except ImportError:
+        Command = object
 
-    class DefaultInstallCommand(Command):
-        user_options = []
+        class DefaultInstallCommand(Command):
+            user_options = []
+
+        class DefaultInstallLibCommand(DefaultInstallCommand):
+            pass
 
 from setuptools import find_packages
 from setuptools import setup
 
 
-version = '0.0.5'
+version = '0.0.6'
 long_description = '\n\n'.join([open(f).read() for f in [
     'README.rst',
     'LICENSE.rst',
@@ -27,6 +38,21 @@ class InstallCommand(DefaultInstallCommand):
 
     root = None
     finalized = True
+    user_options = (
+        DefaultInstallCommand.user_options +
+        DefaultInstallLibCommand.user_options
+    )
+    boolean_options = (
+        DefaultInstallCommand.boolean_options +
+        DefaultInstallLibCommand.boolean_options
+    )
+
+    def __getattribute__(self, attr):
+        # To trick options detection
+        try:
+            return object.__getattribute__(self, attr)
+        except AttributeError:
+            return None
 
     def __init__(self, dist):
         pass
@@ -52,7 +78,7 @@ setup(
     author='Richard Mitchell',
     author_email='mitch@awesomeco.de',
     url='https://github.com/mitchellrj/src',
-    license='WTFPL',
+    license='Apache 2.0',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',

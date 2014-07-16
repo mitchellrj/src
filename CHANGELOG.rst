@@ -1,6 +1,11 @@
 Changes
 =======
 
+0.0.6
+-----
+* Fix option parsing for some versions of distribute / setuptools.
+* Change license to Apache 2.0.
+
 0.0.5
 -----
 Fixed behaviour when run with ``easy_install``.
