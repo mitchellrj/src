@@ -3,6 +3,7 @@ try:
     from distutils.command.install import install as DefaultInstallCommand
 except ImportError:
     Command = object
+
     class DefaultInstallCommand(Command):
         user_options = []
 
@@ -15,11 +16,11 @@ long_description = '\n\n'.join([open(f).read() for f in [
     'README.rst',
     'LICENSE.rst',
     'CHANGELOG.rst',
-    ]])
+]])
 requires = [
-    ]
+]
 tests_require = [
-    ]
+]
 
 
 class InstallCommand(DefaultInstallCommand):
@@ -45,7 +46,7 @@ class InstallCommand(DefaultInstallCommand):
 setup(
     name='src',
     version=version,
-    description='',
+    description='Not your source.',
     long_description=long_description,
     keywords='',
     author='Richard Mitchell',
@@ -55,7 +56,7 @@ setup(
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
-        ],
+    ],
     packages=find_packages(),
     include_package_data=True,
     zip_safe=False,
