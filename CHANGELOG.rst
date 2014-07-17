@@ -1,6 +1,13 @@
 Changes
 =======
 
+0.0.7
+-----
+* Updated README to include links to pip and setuptools issues and
+  explain what this package does.
+* Updated installation script to exit with an error rather than
+  normally.
+
 0.0.6
 -----
 * Fix option parsing for some versions of distribute / setuptools.
