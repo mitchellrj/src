@@ -64,7 +64,7 @@ class InstallCommand(DefaultInstallCommand):
     def run(self):
         print("You've probably made a mistake here and are trying to install "
               "from a 'src' directory which doesn't exist.")
-        raise SystemExit
+        raise SystemExit(1)
 
 
 setup(
