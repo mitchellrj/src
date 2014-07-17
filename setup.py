@@ -2,17 +2,19 @@ try:
     from setuptools import Command
     from setuptools.command.install import install as DefaultInstallCommand
     from setuptools.command.install_lib import install_lib as \
-            DefaultInstallLibCommand
+        DefaultInstallLibCommand
 except ImportError:
     try:
         from distutils.cmd import Command
         from distutils.command.install import install as DefaultInstallCommand
         from distutils.command.install_lib import install_lib as \
-                DefaultInstallLibCommand
+            DefaultInstallLibCommand
     except ImportError:
         Command = object
+
         class DefaultInstallCommand(Command):
             user_options = []
+
         class DefaultInstallLibCommand(DefaultInstallCommand):
             pass
 
@@ -25,11 +27,11 @@ long_description = '\n\n'.join([open(f).read() for f in [
     'README.rst',
     'LICENSE.rst',
     'CHANGELOG.rst',
-    ]])
+]])
 requires = [
-    ]
+]
 tests_require = [
-    ]
+]
 
 
 class InstallCommand(DefaultInstallCommand):
@@ -37,13 +39,13 @@ class InstallCommand(DefaultInstallCommand):
     root = None
     finalized = True
     user_options = (
-            DefaultInstallCommand.user_options +
-            DefaultInstallLibCommand.user_options
-        )
+        DefaultInstallCommand.user_options +
+        DefaultInstallLibCommand.user_options
+    )
     boolean_options = (
-            DefaultInstallCommand.boolean_options +
-            DefaultInstallLibCommand.boolean_options
-        )
+        DefaultInstallCommand.boolean_options +
+        DefaultInstallLibCommand.boolean_options
+    )
 
     def __getattribute__(self, attr):
         # To trick options detection
@@ -70,7 +72,7 @@ class InstallCommand(DefaultInstallCommand):
 setup(
     name='src',
     version=version,
-    description='',
+    description='Not your source.',
     long_description=long_description,
     keywords='',
     author='Richard Mitchell',
@@ -80,7 +82,7 @@ setup(
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
-        ],
+    ],
     packages=find_packages(),
     include_package_data=True,
     zip_safe=False,
